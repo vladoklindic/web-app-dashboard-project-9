@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Web App Dashboard</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" href="autoComplete/auto-complete.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header role="banner">
+		<h1 id="app-name"><span class="app-name-bold">Your</span><span class="app-name-thin">App<sup>TM</sup></span></h1>
+		<div id="notifications">
+			<img src="icons/icon-bell.svg">
+			<span id="notifications-counter"></span>
+			<ul id="notifications-list"></ul>
+		</div>
+		<div id="profile">
+			<img src="icons/profile.jpg">
+			<h3>Vlado Klindic</h3>
+		</div>
+	</header>
+	<div id="wrapper">
+		<nav>
+			<ul>
+				<li id="nav-dashboard" class="nav-active"><a href="#dashboard"><img src="icons/icon-dashboard.svg" alt="dashboard icon" ></a></li>
+				<li id="nav-members"><a href="#members-activity"><img src="icons/icon-members.svg" alt="members icon"></a></li>
+				<li id="nav-visits"><a href="#daily-traffic"><img src="icons/icon-visits.svg" alt="visits icon"></a></li>
+				<li id="nav-settings"><a href="#settings"><img src="icons/icon-settings.svg" alt="settings icon"></a></li>
+			</ul>
+		</nav>
+		<main>
+			<!-- dashboard -->
+			<div id="dash-search">
+				<div id="dashboard">
+					<h3>Dashboard</h3>
+				</div>
+				<div id="search-container">
+					<input type="text" id="search" name="search" placeholder="Search">
+				</div>
+			</div>
+			<div id="alert">
+				<strong>Alert</strong>   
+				<p>Lorem ipsum dolor sit amet</p>
+				<span id="close-alert">&times;</span>
+			</div>
+			<!-- /dashboard -->
+			<!-- charts -->
+			<div id="traffic">
+				<h3 class="subhead">traffic</h3>
+				<div id="line-chart-buttons">
+					<button type="button" name="hourlyButton" id="hourlyButton" onclick="hourly()">Hourly</button>
+					<button type="button" name="dailyButton" onclick="daily()">Daily</button>
+					<button type="button" name="weeklyButton" class="active" onclick="weekly()">Weekly</button>
+					<button type="button" name="monthlyButton" onclick="monthly()">Monthly</button>
+				</div>
+				<canvas id="line-chart"></canvas>
+			</div>
+			<div id="daily-mobile">
+				<div id="daily-traffic">
+					<h3 class="subhead">daily traffic</h3>
+					<canvas id="bar-chart"></canvas>
+				</div>
+				<div id="mobile-users">
+					<h3 class="subhead">mobile users</h3>
+					<canvas id="doughnut-chart"></canvas>
+				</div>
+			</div>
+			<!-- /charts -->
+			<!-- social stats -->
+			<div id="social-stats">
+				<h3 class="social-stats-heading subhead">social stats</h3>
+				<div class="social-container">
+					<div class="social-icon">
+						<img src="icons/icon-twitter-2.svg">
+					</div>
+					<div class="social-stats">
+						<h3 class="social-name">Twitter</h3>
+						<span>10,345</span>
+					</div>	
+				</div>
+				<div class="social-container">
+					<div class="social-icon">
+						<img src="icons/icon-facebook.svg">
+					</div>
+					<div class="social-stats">
+						<h3 class="social-name">Facebook</h3>
+						<span>8,739</span>
+					</div>	
+				</div>
+				<div class="social-container">
+					<div class="social-icon">
+						<img src="icons/icon-google-plus.svg">
+					</div>
+					<div class="social-stats">
+						<h3 class="social-name">Google+</h3>
+						<span>2,530</span>
+					</div>	
+				</div>
+			</div>
+			<!-- /social stats -->
+			<div id="members-activity">
+				<!-- new users -->
+				<div id="new-users">
+					<h3 id="new-members" class="subhead">new members</h3>
+					<ul id="members">
+					</ul>
+				</div>
+				<!-- /new users -->
+				<!-- recent activities -->
+				<div id="recent-activity">
+					<h3 class="subhead">recent activity</h3>
+					<ul id="activities">
+						<li>
+							<img src="icons/victoriaChambers.jpg" alt="Members picture" class="members-icon">
+							<div>
+								<p class="comment">Victoria Chambers commented on YourApp's SEO Tips</p>
+								<p class="time">4 hours ago</p>
+							</div>
+							<span class="arrow"><img src="icons/more-than.svg"></span>
+						</li>
+						<li>
+							<img src="icons/daleByrd.jpg" alt="Members picture" class="members-icon">
+							<div>
+								<p class="comment">Dale Byrd like the post Facebook's Changes for 2016</p>
+								<p class="time">5 hours ago</p>
+							</div>
+							<span class="arrow"><img src="icons/more-than.svg"></span>
+						</li>
+						<li>
+							<img src="icons/dawnWood.jpg" alt="Members picture" class="members-icon">
+							<div>
+								<p class="comment">Dawn Wood commented on Facebook's Changes for 2016</p>
+								<p class="time">5 hours ago</p>
+							</div>
+							<span class="arrow"><img src="icons/more-than.svg"></span>
+						</li>
+						<li>
+							<img src="icons/danOliver.jpg" alt="Members picture" class="members-icon">
+							<div>
+								<p class="comment">Dan Oliver posted YourApp's SEO Tips</p>
+								<p class="time">1 day ago</p>
+							</div>
+							<span class="arrow"><img src="icons/more-than.svg"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- /recent activities -->
+			<div id="message-settings">
+				<!-- message to user -->
+				<div id="message-container">
+					<h3 class="subhead">message user</h3>
+					<form id="message-form" role="form">
+						<input type="text" name="search-user" id="search-user" aria-label="Search" placeholder="Search for User">
+						<textarea id="message-user" name="message-user" rows="3" placeholder="Message for User"></textarea>
+						<button type="submit" name="send" id="send" class="form-button" onclick="submitForm()">Send</button>
+					</form>	
+				</div>
+				<!-- /message to user -->
+				<!-- settings -->
+				<div id="settings">
+					<h3 class="subhead">settings</h3>
+					<div id="send-email">
+						<p>Send Email Notifications</p>
+						<div class="onoffswitch">
+							<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="email-onoffswitch" checked>
+							<label class="onoffswitch-label" for="email-onoffswitch">
+								<span class="onoffswitch-inner"></span>
+								<span class="onoffswitch-switch"></span>
+							</label>
+						</div>
+					</div>
+					<div id="set-profile">
+						<p>Set Profile to Public</p>
+						<div class="onoffswitch">
+							<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="profile-onoffswitch" checked>
+							<label class="onoffswitch-label" for="profile-onoffswitch">
+								<span class="onoffswitch-inner"></span>
+								<span class="onoffswitch-switch"></span>
+							</label>
+						</div>	
+					</div>
+					<select name="timezone" id="timezone" class="select-icon">	
+						<option selected>Select Timezone</option>
+						<option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
+						<option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
+						<option value="-10:00">(GMT -10:00) Hawaii</option>
+						<option value="-09:50">(GMT -9:30) Taiohae</option>
+						<option value="-09:00">(GMT -9:00) Alaska</option>
+						<option value="-08:00">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+						<option value="-07:00">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+						<option value="-06:00">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+						<option value="-05:00">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+						<option value="-04:50">(GMT -4:30) Caracas</option>
+						<option value="-04:00">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+						<option value="-03:50">(GMT -3:30) Newfoundland</option>
+						<option value="-03:00">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+						<option value="-02:00">(GMT -2:00) Mid-Atlantic</option>
+						<option value="-01:00">(GMT -1:00) Azores, Cape Verde Islands</option>
+						<option value="+00:00">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+						<option value="+01:00">(GMT +1:00) Brussels, Copenhagen, Madrid, Paris</option>
+						<option value="+02:00">(GMT +2:00) Kaliningrad, South Africa</option>
+						<option value="+03:00">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+						<option value="+03:50">(GMT +3:30) Tehran</option>
+						<option value="+04:00">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+						<option value="+04:50">(GMT +4:30) Kabul</option>
+						<option value="+05:00">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+						<option value="+05:50">(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+						<option value="+05:75">(GMT +5:45) Kathmandu, Pokhara</option>
+						<option value="+06:00">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+						<option value="+06:50">(GMT +6:30) Yangon, Mandalay</option>
+						<option value="+07:00">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+						<option value="+08:00">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+						<option value="+08:75">(GMT +8:45) Eucla</option>
+						<option value="+09:00">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+						<option value="+09:50">(GMT +9:30) Adelaide, Darwin</option>
+						<option value="+10:00">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+						<option value="+10:50">(GMT +10:30) Lord Howe Island</option>
+						<option value="+11:00">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+						<option value="+11:50">(GMT +11:30) Norfolk Island</option>
+						<option value="+12:00">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+						<option value="+12:75">(GMT +12:45) Chatham Islands</option>
+						<option value="+13:00">(GMT +13:00) Apia, Nukualofa</option>
+						<option value="+14:00">(GMT +14:00) Line Islands, Tokelau</option>
+					</select>
+					<div id="save-cancel">
+						<button id="save" name="save" type="submit" class="settings-button" onclick="save()">Save</button>
+						<button id="cancel" name="cancel" type="submit" class="settings-button" onclick="cancel()">Cancel</button>
+					</div>	
+				</div>
+			</div>
+			<!-- /settings -->
+		</main>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/linechart.js"></script>
+	<script type="text/javascript" src="js/users.js"></script>
+	<script type="text/javascript" src="autoComplete/auto-complete.min.js"></script>
+	<script type="text/javascript" src="js/search.js"></script>
+</body>
+</html>
